@@ -1,0 +1,4 @@
+- id: cli
+  name: cli
+  description: "Verify if the docs are linked with the code"
+  entry: knowlhooks.sh

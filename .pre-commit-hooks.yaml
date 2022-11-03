@@ -1,0 +1,5 @@
+- id: verify-linked-docs
+  name: verify linked docs
+  description: "Verify if the docs are linked with the code"
+  entry: knowlhooks.sh
+  language: script

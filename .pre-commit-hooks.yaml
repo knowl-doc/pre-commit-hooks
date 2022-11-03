@@ -1,4 +1,4 @@
-- id: knowl-cli_1
+- id: knowl-cli_2
   name: knowl cli
   description: "run knowl cli"
   entry: knowl-hooks.sh

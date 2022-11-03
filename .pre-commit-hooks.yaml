@@ -1,5 +1,5 @@
-- id: verify-linked-docs
-  name: verify linked docs
-  description: "Verify if the docs are linked with the code"
+- id: knowl-cli
+  name: knowl cli
+  description: "run knowl cli"
   entry: knowlhooks.sh
   language: script

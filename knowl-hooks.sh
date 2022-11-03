@@ -1,4 +1,4 @@
 #!/bin/sh
 echo "Hello World"
-python main1.py review-linked-not-updated-snippets
-python main1.py review-linked-updated-snippets
+python main.py review-linked-not-updated-snippets
+python main.py review-linked-updated-snippets

@@ -1,18 +1,19 @@
 #!/bin/sh
-echo "Knowl Pre Commiting Loading"
+echo "Knowl pre-commit hook Loading"
 # check if knowl cli is installed
 # if not then download cli binary to a folder
 # wget binary_url
 # install binary from that folder
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
+export PATH=$PATH:$WORKING_DIR
+
 #TARGET_DIR="/usr/local/apache/conf/modsec_rules/"
 
 verify_wget() {
     BIN_WGET=$(which wget) || {
         echo "You need to install 'wget' to use this hook."
     }
-    echo $BIN_WGET
 }
 
 verify_tmp() {
@@ -22,13 +23,13 @@ verify_tmp() {
 }
 
 create_working_dir(){
-    if [ ! -d "$WORKING_DIR" ]
-then
-    echo "File doesn't exist. Creating now"
-    mkdir -p -- "$WORKING_DIR"
-    echo "File created- /bin/knowl_temp"
-else
-    echo "WORKING_DIR exists"
+if [ ! -d "$WORKING_DIR" ]
+  then
+      echo "File doesn't exist. Creating now"
+      mkdir -p -- "$WORKING_DIR"
+      echo "File created- /bin/knowl_temp"
+  else
+      echo "WORKING_DIR exists"
 fi
 }
 
@@ -36,9 +37,7 @@ download_cli() {
     echo "downloading cli.."
     create_working_dir
     $BIN_WGET --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fPxmV_rWISTaT9_zS5QN8XiOY078YARp' -O $WORKING_DIR/knowl-cli
-    export PATH=$PATH:$WORKING_DIR
     chmod +x $WORKING_DIR/knowl-cli
-
 }
 
 cleanup() {
@@ -48,6 +47,11 @@ cleanup() {
 
 verify_wget
 verify_tmp
-download_cli
+if [ ! -x "$WORKING_DIR/knowl-cli" ]
+  then
+    download_cli
+  else
+    echo "Knowl cli is already installed"
+fi
 cleanup
 knowl-cli

@@ -1,9 +1,5 @@
 #!/bin/sh
 echo "Knowl pre-commit hook Loading"
-# check if knowl cli is installed
-# if not then download cli binary to a folder
-# wget binary_url
-# install binary from that folder
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 export PATH=$PATH:$WORKING_DIR
@@ -45,6 +41,8 @@ cleanup() {
 }
 
 verify_wget
+echo "Knowl pre-commit hook Loading"
+
 verify_tmp
 if [ ! -x "$WORKING_DIR/knowl-cli" ]
   then

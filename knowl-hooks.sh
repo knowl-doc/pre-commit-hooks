@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "Knowl pre-commit hook Loading"
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"

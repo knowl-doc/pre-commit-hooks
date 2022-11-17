@@ -1,9 +1,10 @@
 #!/bin/bash
-echo "Knowl pre-commit hook Loading"
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 export PATH=$PATH:$WORKING_DIR
 exec < /dev/tty
+echo "Knowl pre-commit hook Loading"
+
 
 verify_wget() {
     BIN_WGET=$(which wget) || {

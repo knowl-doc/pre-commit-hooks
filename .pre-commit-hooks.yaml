@@ -1,5 +1,5 @@
-- id: know-cli
-  name: know-cli
+- id: knowl-cli
+  name: knowl-cli
   description: "Verify if the docs are linked with the code"
   entry: knowl-hooks.sh
   language: script

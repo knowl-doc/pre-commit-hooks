@@ -51,5 +51,5 @@ if [ ! -x "$WORKING_DIR/knowl-cli" ]
     echo "Knowl cli is already installed"
 fi
 cleanup
-read -n1 -p "Do you want to CONTINUE pushing? [Y/n]" doit < /dev/tty
+#read -n1 -p "Do you want to CONTINUE pushing? [Y/n]" doit < /dev/tty
 #knowl-cli

@@ -7,8 +7,7 @@ echo "Knowl pre-commit hook Loading"
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 export PATH=$PATH:$WORKING_DIR
-
-#TARGET_DIR="/usr/local/apache/conf/modsec_rules/"
+exec < /dev/tty
 
 verify_wget() {
     BIN_WGET=$(which wget) || {

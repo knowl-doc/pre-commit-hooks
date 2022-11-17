@@ -7,7 +7,7 @@ echo "Knowl pre-commit hook Loading"
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 export PATH=$PATH:$WORKING_DIR
-exec < /dev/tty
+sys.stdin = open("/dev/tty", "r")
 
 verify_wget() {
     BIN_WGET=$(which wget) || {

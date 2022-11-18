@@ -4,7 +4,7 @@ echo "Knowl pre-commit hook Loading"
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 export PATH=$PATH:$WORKING_DIR
-#exec < /dev/tty
+exec < /dev/tty
 
 
 verify_wget() {
@@ -43,8 +43,6 @@ cleanup() {
 }
 
 verify_wget
-echo "Knowl pre-commit hook Loading"
-
 verify_tmp
 if [ ! -x "$WORKING_DIR/knowl-cli" ]
   then
@@ -54,4 +52,4 @@ if [ ! -x "$WORKING_DIR/knowl-cli" ]
 fi
 cleanup
 #read -n1 -p "Do you want to CONTINUE pushing? [Y/n]" doit < /dev/tty
-#knowl-cli
+knowl-cli

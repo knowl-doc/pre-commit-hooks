@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
 export PATH=$PATH:$WORKING_DIR

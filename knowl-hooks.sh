@@ -51,4 +51,4 @@ if [ ! -x "$WORKING_DIR/knowl-cli" ]
 fi
 cleanup
 #read -n1 -p "Do you want to CONTINUE pushing? [Y/n]" doit < /dev/tty
-knowl-cli knowl_cli_precommit
+python knowl-cli knowl_cli_precommit

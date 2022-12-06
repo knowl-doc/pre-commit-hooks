@@ -35,9 +35,7 @@ download_from_link() {
     download_url="$1"
     directory_name="$2"
     file_path="$3"
-    echo $download_url
-    echo $directory_name
-    echo $file_path
+    
     create_working_dir $directory_name
     $BIN_WGET --no-check-certificate $download_url -O $file_path
     chmod +x $file_path

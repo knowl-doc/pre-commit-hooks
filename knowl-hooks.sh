@@ -33,14 +33,14 @@ create_working_dir(){
 download_from_link() {
     echo "download begins ..."
     download_url="$1"
-    directory_name="$WORKING_DIR$3"
-    filename="$2"
-    file_path= $directory_name/$filename
+    directory_name="$2"
+    file_path="$3"
     echo $download_url
+    echo $directory_name
     echo $file_path
     create_working_dir $directory_name
     $BIN_WGET --no-check-certificate $download_url -O $file_path
-    chmod +x $directory_name/$filename 
+    chmod +x $file_path
     echo "download ends ..."
 
 }
@@ -51,32 +51,33 @@ download_cli(){
 
 check_knowl_cli_version() {
     #download version.text
-    echo "check_knowl_cli_version"
-    download_from_link $VERSION_FILE_URL $VERSION_FILE_NAME
+    echo "checking for latest cli version"
+    download_from_link $VERSION_FILE_URL $WORKING_DIR $WORKING_DIR/$VERSION_FILE_NAME
     version_number=$(head -n 1 $WORKING_DIR/$VERSION_FILE_NAME)
     #get folder names in the working directory
-    is_latest_cli_exist=false
+    download_cli=ture
     for dir in $WORKING_DIR/*/
         do
-            if [ `basename ${dir}` = $version_number ]
+            if [ "`basename ${dir}`" = "$version_number" ]
                 then
                     if [ ! -x "$WORKING_DIR/$version_number/$KNOWL_CLI_NAME" ]
                         then
-                            download_from_link $CLI_DOWNLOAD_URL $KNOWL_CLI_NAME $version_number
+                            download_from_link $CLI_DOWNLOAD_URL $WORKING_DIR/$version_number $WORKING_DIR/$version_number/$KNOWL_CLI_NAME 
                          else
                             echo "Latest version of the cli is already installed"
-                        fi
-                    is_latest_cli_exist=true
-                    break
-                else
-                    echo "Downloading latest version of the cli"
-                fi
-        done
-                echo $is_latest_cli_exist
-                if [ ! $is_latest_cli_exist ]
-                    then
-                        download_from_link $CLI_DOWNLOAD_URL $KNOWL_CLI_NAME $version_number
                     fi
+                    echo $download_cli
+                    download_cli=false
+                    break
+                    
+            fi
+        done
+    echo $download_cli
+    if [ $download_cli ]
+    then
+        echo "Downloading latest version of the cli"
+        download_from_link $CLI_DOWNLOAD_URL $WORKING_DIR/$version_number $WORKING_DIR/$version_number/$KNOWL_CLI_NAME
+    fi
 
 }
 

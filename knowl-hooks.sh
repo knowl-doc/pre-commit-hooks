@@ -33,13 +33,13 @@ create_working_dir(){
 download_from_link() {
     echo "download begins ..."
     download_url="$1"
+    directory_name="$WORKING_DIR$3"
     filename="$2"
-    directory_name="$WORKING_DIR/$3"
+    file_path= $directory_name/$filename
     echo $download_url
-    echo $directory_name
-    echo $directory_name/$filename
+    echo $file_path
     create_working_dir $directory_name
-    $BIN_WGET --no-check-certificate $download_url -O $directory_name/$filename
+    $BIN_WGET --no-check-certificate $download_url -O $file_path
     chmod +x $directory_name/$filename 
     echo "download ends ..."
 
@@ -58,7 +58,7 @@ check_knowl_cli_version() {
     is_latest_cli_exist=false
     for dir in $WORKING_DIR/*/
         do
-            if [ `basename ${dir}` = $version_number ]; 
+            if [ `basename ${dir}` = $version_number ]
                 then
                     if [ ! -x "$WORKING_DIR/$version_number/$KNOWL_CLI_NAME" ]
                         then

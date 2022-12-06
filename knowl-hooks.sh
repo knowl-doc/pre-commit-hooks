@@ -3,7 +3,6 @@ echo "Knowl pre-commit hook Loading"
 
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
-export PATH=$PATH:$WORKING_DIR
 KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL='https://drive.google.com/uc?export=download&id=1fPxmV_rWISTaT9_zS5QN8XiOY078YARp'
 VERSION_FILE_URL='https://drive.google.com/uc?export=download&id=1KyDB6NZC2JOOiuEmCdfkpM-aWlWkWXQJ'
@@ -53,7 +52,7 @@ check_knowl_cli_version() {
     download_from_link $VERSION_FILE_URL $WORKING_DIR $WORKING_DIR/$VERSION_FILE_NAME
     version_number=$(head -n 1 $WORKING_DIR/$VERSION_FILE_NAME)
     #get folder names in the working directory
-    download_cli=ture
+    download_cli=1
     for dir in $WORKING_DIR/*/
         do
             if [ "`basename ${dir}`" = "$version_number" ]
@@ -64,18 +63,18 @@ check_knowl_cli_version() {
                          else
                             echo "Latest version of the cli is already installed"
                     fi
-                    echo $download_cli
-                    download_cli=false
+                    download_cli=0
                     break
                     
             fi
         done
-    echo $download_cli
-    if [ $download_cli ]
-    then
-        echo "Downloading latest version of the cli"
-        download_from_link $CLI_DOWNLOAD_URL $WORKING_DIR/$version_number $WORKING_DIR/$version_number/$KNOWL_CLI_NAME
+    if [ $download_cli -eq 1 ]
+        then
+            echo "Downloading latest version of the cli"
+            download_from_link $CLI_DOWNLOAD_URL $WORKING_DIR/$version_number $WORKING_DIR/$version_number/$KNOWL_CLI_NAME
     fi
+
+    export PATH=$PATH:$WORKING_DIR/$version_number
 
 }
 
@@ -87,6 +86,6 @@ cleanup() {
 verify_wget
 verify_tmp
 check_knowl_cli_version
-cleanup
-#read -n1 -p "Do you want to CONTINUE pushing? [Y/n]" doit < /dev/tty
 knowl-cli knowl-cli-precommit
+cleanup
+

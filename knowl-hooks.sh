@@ -6,8 +6,8 @@ WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
 CLI_DOWNLOAD_URL_LINUX='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/ubuntu/Contents/MacOS/knowl-cli'
-VERSION_FILE_URL_MAC='https://drive.google.com/uc?export=download&id=1KyDB6NZC2JOOiuEmCdfkpM-aWlWkWXQJ'
-VERSION_FILE_URL_LINUX='https://drive.google.com/uc?export=download&id=1KyDB6NZC2JOOiuEmCdfkpM-aWlWkWXQJ'
+VERSION_FILE_URL_MAC='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/mac/version.txt'
+VERSION_FILE_URL_LINUX='https://s3.ap-south-1.amazonaws.com/releases.knowl.io/cli/ubuntu/version.txt'
 
 VERSION_FILE_NAME="version.txt"
 

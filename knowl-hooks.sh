@@ -77,7 +77,7 @@ check_knowl_cli_version() {
     version_number=$(head -n 1 $WORKING_DIR/$VERSION_FILE_NAME)
     #get folder names in the working directory
     download_cli=1
-    for dir in $WORKING_DIR/$machine_type/*/
+    for dir in $WORKING_DIR/*/
         do
             if [ "`basename ${dir}`" = "$version_number" ]
                 then

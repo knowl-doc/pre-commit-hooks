@@ -56,9 +56,6 @@ download_from_link() {
     echo "download ends ..."
 
 }
-download_cli(){
-    check_knowl_cli_version
-}
 
 
 check_knowl_cli_version() {

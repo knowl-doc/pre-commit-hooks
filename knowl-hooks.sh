@@ -118,5 +118,6 @@ if [ is_sycned -eq 0 ]
     then 
         echo "error: block precommit"
         exit 1
+fi
 cleanup
 

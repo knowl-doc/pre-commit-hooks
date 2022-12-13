@@ -1,5 +1,10 @@
-- id: knowl-cli
-  name: knowl-cli
+- id: knowl-cli-blocker
+  name: knowl-cli-blocker
   description: "Verify if the docs are linked with the code"
-  entry: knowl-hooks.sh
+  entry: knowl-hooks.sh 0
+  language: script
+- id: knowl-cli-non-blocker
+  name: knowl-cli-non-blocker
+  description: "Verify if the docs are linked with the code"
+  entry: knowl-hooks.sh 1
   language: script

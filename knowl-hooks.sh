@@ -8,6 +8,7 @@ CLI_DOWNLOAD_URL_MAC='https://releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli
 CLI_DOWNLOAD_URL_LINUX='https://releases.knowl.io/cli/linux/knowl-cli'
 VERSION_FILE_URL_MAC='https://releases.knowl.io/cli/mac/version.txt'
 VERSION_FILE_URL_LINUX='https://releases.knowl.io/cli/linux/version.txt'
+PRE_COMMIT_TYPE=$1 #0 - for blocker, 1 for non-blocker
 
 VERSION_FILE_NAME="version.txt"
 
@@ -107,6 +108,8 @@ cleanup() {
 #    rm -f $WORKING_DIR/knowl_cli
 }
 
+echo "PRE_COMMIT_TYPE"
+echo $PRE_COMMIT_TYPE
 machine_type=""
 verify_wget
 verify_tmp
@@ -114,10 +117,14 @@ check_knowl_cli_version
 is_sycned=0
 in_sync=$(knowl-cli knowl-cli-precommit)
 echo $is_sycned
-if [ $is_sycned -eq 0 ]
+if [ $PRE_COMMIT_TYPE -eq 0 ] 
     then 
-        echo "error: block precommit"
-        exit 1
+        echo "PRE_COMMIT_TYPE"
+        echo $PRE_COMMIT_TYPE
+        if [$is_sycned -eq 0 ]
+            then 
+                echo "error: block precommit"
+            exit 1
 fi
 cleanup
 

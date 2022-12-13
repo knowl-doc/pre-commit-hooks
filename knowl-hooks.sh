@@ -111,6 +111,9 @@ machine_type=""
 verify_wget
 verify_tmp
 check_knowl_cli_version
-knowl-cli knowl-cli-precommit
+is_sycned=knowl-cli knowl-cli-precommit
+echo $is_sycned
+if [ is_sycned -eq 0 ]
+    then echo "block precommit"
 cleanup
 

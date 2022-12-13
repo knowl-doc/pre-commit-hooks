@@ -112,7 +112,7 @@ verify_wget
 verify_tmp
 check_knowl_cli_version
 is_sycned=0
-knowl-cli knowl-cli-precommit
+in_sync=$(knowl-cli knowl-cli-precommit)
 echo $is_sycned
 if [ $is_sycned -eq 0 ]
     then 

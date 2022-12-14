@@ -122,6 +122,8 @@ if [ $PRE_COMMIT_TYPE -eq 0 ]
             then 
                 echo "error: block precommit"
             exit 1
+            else:
+                
         fi
 fi
 cleanup

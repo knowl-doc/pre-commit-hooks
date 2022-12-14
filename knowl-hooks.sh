@@ -1,15 +1,14 @@
 #!/bin/sh
 echo "Knowl pre-commit hook Loading"
 
-BIN_PATH="$HOME"
-WORKING_DIR="$BIN_PATH/knowl_temp"
+WORKING_DIR="/Users/knowl/knowl_temp/"
 KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL_MAC='https://releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
 CLI_DOWNLOAD_URL_LINUX='https://releases.knowl.io/cli/linux/knowl-cli'
 VERSION_FILE_URL_MAC='https://releases.knowl.io/cli/mac/version.txt'
 VERSION_FILE_URL_LINUX='https://releases.knowl.io/cli/linux/version.txt'
 PRE_COMMIT_TYPE=$1 #0 - for blocker, 1 for non-blocker
-
+TEMP_DATA_FILE="$WORKING_DIR/tmp_data.txt"
 VERSION_FILE_NAME="version.txt"
 
 
@@ -105,6 +104,7 @@ check_knowl_cli_version() {
 
 cleanup() {
     echo "Cleaning up..."
+    rm $TEMP_DATA_FILE
 #    rm -f $WORKING_DIR/knowl_cli
 }
 
@@ -113,12 +113,10 @@ machine_type=""
 verify_wget
 verify_tmp
 check_knowl_cli_version
-is_sycned=`knowl-cli knowl-cli-precommit`
-echo $is_sycned
+knowl-cli knowl-cli-precommit
+is_sycned=$(head -n 1 $TEMP_DATA_FILE)
 if [ $PRE_COMMIT_TYPE -eq 0 ] 
-    then 
-        echo "PRE_COMMIT_TYPE"
-        echo $PRE_COMMIT_TYPE
+    then
         if [ $is_sycned -eq 0 ]
             then 
                 echo "error: block precommit"

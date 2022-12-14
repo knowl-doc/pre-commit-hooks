@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "Knowl pre-commit hook Loading"
 
-WORKING_DIR="/Users/knowl/knowl_temp/"
+WORKING_DIR="/Users/knowl/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL_MAC='https://releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
 CLI_DOWNLOAD_URL_LINUX='https://releases.knowl.io/cli/linux/knowl-cli'
@@ -104,7 +104,6 @@ check_knowl_cli_version() {
 
 cleanup() {
     echo "Cleaning up..."
-    rm $TEMP_DATA_FILE
 #    rm -f $WORKING_DIR/knowl_cli
 }
 
@@ -115,6 +114,7 @@ verify_tmp
 check_knowl_cli_version
 knowl-cli knowl-cli-precommit
 is_sycned=$(head -n 1 $TEMP_DATA_FILE)
+rm $TEMP_DATA_FILE
 if [ $PRE_COMMIT_TYPE -eq 0 ] 
     then
         if [ $is_sycned -eq 0 ]

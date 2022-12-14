@@ -1,7 +1,8 @@
 #!/bin/sh
 echo "Knowl pre-commit hook Loading"
 
-WORKING_DIR="/Users/knowl/knowl_temp"
+BIN_PATH="/Users/knowl"
+WORKING_DIR="$BIN_PATH/knowl_temp"
 KNOWL_CLI_NAME="knowl-cli"
 CLI_DOWNLOAD_URL_MAC='https://releases.knowl.io/cli/mac/Contents/MacOS/knowl-cli'
 CLI_DOWNLOAD_URL_LINUX='https://releases.knowl.io/cli/linux/knowl-cli'

@@ -1,6 +1,6 @@
 # pre-commit ooks
  
-**Blocker Hook **
+** Blocker Hook **
 -   repo: https://github.com/knowl-doc/pre-commit-hooks
     rev: v0.1
     hooks:
@@ -8,7 +8,7 @@
         verbose: true
         
         
-**Non Blocker Hook **
+** Non Blocker Hook **
 -   repo: https://github.com/knowl-doc/pre-commit-hooks
     rev: v0.1
     hooks:

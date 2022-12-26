@@ -114,7 +114,7 @@ machine_type=""
 verify_wget
 verify_tmp
 check_knowl_cli_version
-knowl-cli knowl_cli $EVENT_PRE_COMMIT, $TEMP_DATA_FILE
+knowl-cli knowl_cli $EVENT_PRE_COMMIT $TEMP_DATA_FILE
 is_sycned=$(head -n 1 $TEMP_DATA_FILE)
 rm $TEMP_DATA_FILE
 if [ $PRE_COMMIT_TYPE -eq 0 ] 

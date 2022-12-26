@@ -11,6 +11,7 @@ VERSION_FILE_URL_LINUX='https://releases.knowl.io/cli/linux/version.txt'
 PRE_COMMIT_TYPE=$1 #0 - for blocker, 1 for non-blocker
 TEMP_DATA_FILE="$WORKING_DIR/tmp_data.txt"
 VERSION_FILE_NAME="version.txt"
+EVENT_PRE_COMMIT =  'pre_commit'
 
 
 
@@ -113,7 +114,7 @@ machine_type=""
 verify_wget
 verify_tmp
 check_knowl_cli_version
-knowl-cli knowl-cli-precommit $TEMP_DATA_FILE
+knowl-cli knowl_cli $EVENT_PRE_COMMIT, $TEMP_DATA_FILE
 is_sycned=$(head -n 1 $TEMP_DATA_FILE)
 rm $TEMP_DATA_FILE
 if [ $PRE_COMMIT_TYPE -eq 0 ] 

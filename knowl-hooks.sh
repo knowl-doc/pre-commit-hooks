@@ -117,6 +117,7 @@ verify_tmp
 check_knowl_cli_version
 knowl-cli knowl_cli $EVENT_PRE_COMMIT $TEMP_DATA_FILE
 is_sycned=$(head -n 1 $TEMP_DATA_FILE)
+cleanup
 if [ $PRE_COMMIT_TYPE -eq 0 ] 
     then
         if [ $is_sycned -eq 0 ]
@@ -125,5 +126,4 @@ if [ $PRE_COMMIT_TYPE -eq 0 ]
             exit 1
         fi
 fi
-cleanup
 

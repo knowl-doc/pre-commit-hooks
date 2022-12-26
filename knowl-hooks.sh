@@ -113,7 +113,7 @@ machine_type=""
 verify_wget
 verify_tmp
 check_knowl_cli_version
-knowl-cli knowl-cli-precommit
+knowl-cli knowl-cli-precommit $TEMP_DATA_FILE
 is_sycned=$(head -n 1 $TEMP_DATA_FILE)
 rm $TEMP_DATA_FILE
 if [ $PRE_COMMIT_TYPE -eq 0 ] 
@@ -122,8 +122,6 @@ if [ $PRE_COMMIT_TYPE -eq 0 ]
             then 
                 echo "error: block precommit"
             exit 1
-            else:
-                
         fi
 fi
 cleanup
